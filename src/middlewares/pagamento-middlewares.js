@@ -1,6 +1,6 @@
 const pagamentos = require("../mocks/listaPagamentos");
-const listaAnimes = require("../mocks/listaAnimes")
-const animesModel = require("../models/animesModel")
+const listaPagamentos = require("../mocks/listaPagamentos")
+const pagamentoModel = require("../models/pagamentosModel")
 
 async function middlewareGetPagamentoById(res, res, next) {
     const {id} = req.params;
