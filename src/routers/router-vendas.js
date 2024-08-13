@@ -21,5 +21,4 @@ router.delete(
   "/vendas/:id",
   middlewareVendas.middlewareDeleteVendas,
   vendasController.deleteVendas
->>>>>>> 2faacbe (add vendas)
 );
