@@ -74,5 +74,6 @@ module.exports = {
     getPagamentoByIdModel,
     insertPagamentoModel,
     getPagamentoByNameModel,
-    updatePagamentoModel
+    updatePagamentoModel,
+    deletePagamentosModel
 }
