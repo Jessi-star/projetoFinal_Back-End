@@ -27,7 +27,7 @@ async function insertCaractereClientesModel(
             ${veiculo_id},
             '${cor}',
             '${combustivel}',
-            '${quilometragem}',
+            ${quilometragem}
         )
      `)
 
