@@ -31,7 +31,7 @@ async function middlewareUpdatePagamento(req, res, next) {
 
 }
 
-async function middlewaresInsertPagamento(req, res, next) {
+async function middlewareInsertPagamento(req, res, next) {
     const {
         marca,
         modelo,
@@ -74,7 +74,7 @@ const pagamento = await pagamentosModel.getPagamentoByIdModel(id);
 module.exports = {
     middlewareGetPagamentoById,
     middlewareUpdatePagamento,
-    middlewaresInsertPagamento,
+    middlewareInsertPagamento,
     middlewareDeletePagamento
 
 }
