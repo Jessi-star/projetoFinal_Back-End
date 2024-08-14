@@ -1,9 +1,9 @@
 const caracteClientes = require("../controllers/carro-controller");
-const clientesModel = require("../models/clientesModel");
+const clientesModel = require("../models/caracteClienteModel");
 
 async function middlewareGetAllClientes(req, res, next) {
   const { id } = req.params;
-  const clientes = await clientesModel.etAllclientesModel(id);
+  const clientes = await clientesModel.getAllCaractereClientesModel(id);
 
   if (!clientes) {
     return res.status(404).send("Cliente não encontrado");
