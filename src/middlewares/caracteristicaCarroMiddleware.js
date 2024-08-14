@@ -13,13 +13,13 @@ async function middlewareGetAllClientes(req, res, next) {
 }
 
 async function middlewareInsertClientes(req, res, next) {
-  const { nome, cpf, telefone, email, endereco } = req.body;
+  const { veiculo_ID, cor, combustivel, quilometragem  } = req.body;
 
-  if (!nome || !cpf || !telefone || !email || !endereco) {
+  if (!veiculo_ID || !cor || !combustivel || !quilometragem ) {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await clientesModel.getClientesByNameModel(nome);
+  const clientes = await clientesModel.insertCaractereClientesModel(veiculo_ID, cor, combustivel, quilometragem);
 
   if (clientes) {
     return res.status(400).send("Cliente já cadastrado");
@@ -30,13 +30,13 @@ async function middlewareInsertClientes(req, res, next) {
 
 async function middlewareUpdateClientes(req, res, next) {
   const { id } = req.params;
-  const { caracteClientes } = req.body;
+  const { veiculo_ID, cor, combustivel, quilometragem } = req.body;
 
-  if (!id || !caracteClientes) {
+  if (!id || !veiculo_ID || !cor || !combustivel || !quilometragem)  {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await clientesModel.getClientesByIdModel(id);
+  const clientes = await clientesModel.getCaractereClientesByIdModel(id);
 
   if (!clientes) {
     return res.status(404).send("Cliente não encontrado");
@@ -52,7 +52,7 @@ async function middlewareDeleteClientes(req, res, next) {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await clientesModel.getClientesByIdModel(id);
+  const clientes = await clientesModel.getCaractereClientesByIdModel(id);
 
   if (!clientes) {
     return res.status(404).send("Cliente não encontrado");
