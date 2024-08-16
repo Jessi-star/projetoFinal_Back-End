@@ -19,7 +19,7 @@ async function insertCarro(req,res) {
         marca,
         modelo,
         ano,
-        preço,
+        preco,
         status,
     } = req.body;
 
@@ -28,7 +28,7 @@ async function insertCarro(req,res) {
             marca,
             modelo,
             ano,
-            preço,
+            preco,
             status
         );
    } catch(err){
@@ -38,11 +38,11 @@ async function insertCarro(req,res) {
     return res.status(201).send("Carro inserido com sucesso")
 }
 
-async function updatePreço(req, res){
+async function updatePreco(req, res){
     const { id } = req.params;
-    const {preço} = req.body;
+    const {preco} = req.body;
 
-    await carroModels.updatePreço(id, preço);
+    await carroModels.updatePreco(id, preco);
 
     return res.send("Preço atualizado com sucesso");
 }
@@ -59,6 +59,6 @@ module.exports ={
     getAllCarros,
     insertCarro,
     getCarroById,
-    updatePreço,
+    updatePreco,
     deleteCarro,
 }

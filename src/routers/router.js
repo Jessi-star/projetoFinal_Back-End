@@ -18,13 +18,13 @@ router.post(
 );
 
 router.put(
-    "/carro/:id",
+    "/carros/:id",
     middlewareCarro.middlewareUpdateCarro,
-    carroController.updatePreço,
+    carroController.updatePreco,
 );
 
 router.delete(
-    "/carro/:id",
+    "/carros/:id",
     middlewareCarro.middlewareDeleteCarro,
     carroController.deleteCarro,
 );

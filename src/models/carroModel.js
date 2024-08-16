@@ -20,25 +20,23 @@ async function insertCarroModel(
     marca,
     modelo,
     ano,
-    preço,
-    imagem,
+    preco,
     status,
 ) {
     await connection.query(`
-    INSERT INTO veiculos ( marca, modelo, ano, preço, imagem,  status) VALUES (
+    INSERT INTO veiculos ( marca, modelo, ano, preco,   status) VALUES (
         '${marca}',
-            ${modelo},
+            '${modelo}',
             ${ano},
-            '${preço}',
-            '${imagem}',
-            ${status},
+            '${preco}',
+            '${status}'
     )
     `)
 
     return;
 }
 
-async function getCarroByNameModel(marca){
+async function getCarroByNameModel(marca) {
     const carro = await connection.query(
         `SELECT * FROM veiculos WHERE marca LIKE '${marca}'`
     )
@@ -46,15 +44,15 @@ async function getCarroByNameModel(marca){
     return carro.rows[0];
 }
 
-async function updateCarroModel(id, preço){
+async function updateCarroModel(id, preco) {
     await connection.query(`
-        UPDATE veiculos SET preço = ${preço} WHERE id = ${id}
+        UPDATE veiculos SET preço = ${preco} WHERE id = ${id}
     `)
 
     return;
 }
 
-async function deleteCarrosModel(id){
+async function deleteCarrosModel(id) {
     await connection.query(`
         DELETE FROM veiculos WHERE id = ${id}
     `)
