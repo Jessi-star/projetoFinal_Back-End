@@ -23,13 +23,17 @@ async function insertCarro(req,res) {
         status,
     } = req.body;
 
-    await carroModels.insertCarroModel(
-        marca,
-        modelo,
-        ano,
-        preço,
-        status
-    );
+   try{ 
+        await carroModels.insertCarroModel(
+            marca,
+            modelo,
+            ano,
+            preço,
+            status
+        );
+   } catch(err){
+     return res.status(400).send(err.message)
+   }
 
     return res.status(201).send("Carro inserido com sucesso")
 }
@@ -46,7 +50,7 @@ async function updatePreço(req, res){
 async function deleteCarro(req, res){
     const { id } = req.params;
 
-    await carroModels.deleteCarroModel(id);
+    await carroModels.deleteCarrosModel(id);
 
     return res.send("Carro retirado com sucesso");
 }
