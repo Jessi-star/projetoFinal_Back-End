@@ -24,9 +24,9 @@ async function middlewareInsertCarro(req, res, next) {
 
 async function middlewareUpdateCarro(req, res, next) {
     const { id } = req.params;
-    const { preço } = req.body;
+    const { preco } = req.body;
 
-    if (!id || !preço) {
+    if (!id || !preco) {
         return res.status(400).send("Dados incompletos");
     }
 
