@@ -1,6 +1,7 @@
 const express = require('express');
 const router = require('./routers/router');
 const routerCaracteristicaCarro = require('./routers/router-caracteristica-carro');
+const routerUsers = require('./routers/router-users');
 
 const app = express();
 app.use(express.json());
