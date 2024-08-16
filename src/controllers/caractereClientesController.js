@@ -23,13 +23,18 @@ async function insertClientes(req,res){
         endereco,
     } = req.body;
 
-    await clientesModel.insertCaractereClientesModel(
-        nome,
-        cpf,
-        telefone,
-        email,
-        endereco,
-    );
+
+    try{ 
+        await clientesModel.insertCaractereClientesModel(
+            nome,
+            cpf,
+            telefone,
+            email,
+            endereco,
+        );
+   } catch(err){
+     return res.status(400).send(err.message)
+   }
 
     return res.status(201).send("Cliente inserido com sucesso");
 }

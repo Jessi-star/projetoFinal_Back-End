@@ -19,7 +19,7 @@ async function insertCarro(req,res) {
         marca,
         modelo,
         ano,
-        preço,
+        preco,
         status,
     } = req.body;
 
@@ -28,7 +28,7 @@ async function insertCarro(req,res) {
             marca,
             modelo,
             ano,
-            preço,
+            preco,
             status
         );
    } catch(err){
