@@ -1,6 +1,6 @@
 const connection = require ('./connection');
 
-async function getAllPagamentosModel() {
+async function getAllPagamentoModel() {
     const pagamentos = await connection.query(
         'SELECT * FROM pagamentos'
     )
@@ -17,26 +17,17 @@ async function getPagamentoByIdModel(id){
 }
 
 async function insertPagamentoModel(
-        marca,
         modelo,
-        ano,
-        preço,
-        imagem,
+        preco,
         status
 ){
     await connection.query(`
-    INSERT INTO pagamentos (marca,
-        modelo,
-        ano,
-        preço,
-        imagem,
+    INSERT INTO pagamentos (modelo,
+        preco,
         status
     ) VALUES (
-      '${marca}',  
         '${modelo}',
-        '${ano}',
-        '${preço}',
-        '${imagem}',
+        '${preco}',
         '${status}'
       )
     `)
@@ -45,23 +36,23 @@ async function insertPagamentoModel(
 
 }
 
-async function getPagamentoByNameModel(preço){
+async function getPagamentoByNameModel(preco){
     const pagamento = await connection.query(
-    `SELECT * FROM pagamentos WHERE nome LIKE '${preço}'`
+    `SELECT * FROM pagamentos WHERE nome LIKE '${preco}'`
     )
 
     return pagamento.rows[0];
 }
 
-async function updatePagamentoModel(id, preço){
+async function updatePagamentoModel(id, preco){
     await connection.query(`
-    UPDATE pagamentos SET episodios = ${preço} WHERE id = ${id}
+    UPDATE pagamentos SET preco = ${preco} WHERE id = ${id}
     `)
     return;
 }
 
 
-async function deletePagamentosModel(id){
+async function deletePagamentoModel(id){
     await connection.query(`
     DELETE FROM pagamentos WHERE id= ${id}`)
 
@@ -70,11 +61,11 @@ async function deletePagamentosModel(id){
 
   
 module.exports = {
-    getAllPagamentosModel,
+    getAllPagamentoModel,
     getPagamentoByIdModel,
     insertPagamentoModel,
     getPagamentoByNameModel,
     updatePagamentoModel,
-    deletePagamentosModel,
+    deletePagamentoModel,
 
 }

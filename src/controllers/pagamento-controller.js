@@ -1,17 +1,16 @@
-const listaPagamentos = require("../mocks/listaPagamentos");
-const pagamentosModel = require("../models/pagamentosModel");
+const pagamentoModel = require("../models/pagamentoModel");
 
 
 
 async function getAllPagamentos(req, res) {
-    const pagamentos = await pagamentosModel.getAllPagamentosModel();
+    const pagamentos = await pagamentoModel.getAllPagamentoModel();
 
     return res.send(pagamentos);
 }
 
 async function getPagamentosById(req, res){
     const {id} = req.params;
-    const pagamentos = await pagamentosModel.getAllPagamentosModel(id);
+    const pagamentos = await pagamentoModel.getAllPagamentoModel(id);
 
     return res.send(pagamentos);
 
@@ -19,20 +18,14 @@ async function getPagamentosById(req, res){
 
 async function insertPagamento(req, res){
     const{
-        marca,
         modelo,
-        ano,
-        preço,
-        imagem,
+        preco,
         status
     } = req.body
 
-    await pagamentosModel.insertPagamentoModel(
-        marca,
+    await pagamentoModel.insertPagamentoModel(
         modelo,
-        ano,
-        preço,
-        imagem,
+        preco,
         status
     );
 
@@ -52,7 +45,7 @@ async function updatePagamento(req, res){
 async function deletePagamento(req, res){
     const {id} = req.params;
 
-    await pagamentosModel.deletePagamentoModel(id);
+    await pagamentoModel.deletePagamentoModel(id);
     
     return res.send("Pagamento deletado com sucesso");
 }

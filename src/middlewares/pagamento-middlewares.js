@@ -1,10 +1,8 @@
-const pagamentos = require("../mocks/listaPagamentos");
-const listaPagamentos = require("../mocks/listaPagamentos")
-const pagamentoModel = require("../models/pagamentosModel")
+const pagamentoModel = require("../models/pagamentoModel")
 
 async function middlewareGetPagamentoById(res, res, next) {
     const {id} = req.params;
-    const pagamento = await pagamentosModel.getPagamentoByIdModel(id);
+    const pagamento = await pagamentoModel.getPagamentoByIdModel(id);
 
     if(!pagamento){
         return res.status(404).send("Pagamento não encontrado")
@@ -15,13 +13,13 @@ async function middlewareGetPagamentoById(res, res, next) {
 
 async function middlewareUpdatePagamento(req, res, next) {
     const {id} = req.params;
-    const {preço} = req.body;
+    const {preco} = req.body;
 
-    if(!id|| !preço){
+    if(!id|| !preco){
         return res.status(400).send("Dados incompletos")
     }
 
-    const pagamento = await pagamentosModel.getPagamentoByIdModel(id);
+    const pagamento = await pagamentoModel.getPagamentoByIdModel(id);
 
     if(!pagamento){
         return res.status(404).send("Pagamento não encontrado");
@@ -33,19 +31,16 @@ async function middlewareUpdatePagamento(req, res, next) {
 
 async function middlewareInsertPagamento(req, res, next) {
     const {
-        marca,
         modelo,
-        ano,
-        preço,
-        imagem,
+        preco,
         status
     } = req.body;
 
-    if ( !marca|| !modelo ||!ano ||!preço|| !imagem || !status){
+    if ( !modelo ||!preco || !status){
     return res.status(400).send("Dados incompletos");
     }
 
-    const pagamento = await pagamentosModel.getPagamentoByMarcaModel(marca);
+    const pagamento = await pagamentoModel.getPagamentoByMarcaModel(marca);
 
     if(pagamento){
         return res.status(400).send("Pagamento já cadastrado");
@@ -61,7 +56,7 @@ async function middlewareDeletePagamento(req, res ,next) {
         return res.status(400).send("Dados incompletos")
     }
     
-const pagamento = await pagamentosModel.getPagamentoByIdModel(id);
+const pagamento = await pagamentoModel.getPagamentoByIdModel(id);
 
     if(!pagamento){
         return res.status(404).send("Pagamento não encontrado");
