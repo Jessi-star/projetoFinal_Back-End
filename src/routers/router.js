@@ -3,6 +3,7 @@ const router = express.Router();
 const carroController = require("../controllers/carro-controller");
 const middlewareCarro = require("../middlewares/carro-middlewares");
 
+
 router.get("/carros", carroController.getAllCarros);
 router.get(
     "/carros/:id",
@@ -17,13 +18,13 @@ router.post(
 );
 
 router.put(
-    "/carro/:id",
+    "/carros/:id",
     middlewareCarro.middlewareUpdateCarro,
-    carroController.updatePreço,
+    carroController.updatePreco,
 );
 
 router.delete(
-    "/carro/:id",
+    "/carros/:id",
     middlewareCarro.middlewareDeleteCarro,
     carroController.deleteCarro,
 );

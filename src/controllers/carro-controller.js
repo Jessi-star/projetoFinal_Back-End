@@ -19,26 +19,30 @@ async function insertCarro(req,res) {
         marca,
         modelo,
         ano,
-        preço,
+        preco,
         status,
     } = req.body;
 
-    await carroModels.insertCarroModel(
-        marca,
-        modelo,
-        ano,
-        preço,
-        status
-    );
+   try{ 
+        await carroModels.insertCarroModel(
+            marca,
+            modelo,
+            ano,
+            preco,
+            status
+        );
+   } catch(err){
+     return res.status(400).send(err.message)
+   }
 
     return res.status(201).send("Carro inserido com sucesso")
 }
 
-async function updatePreço(req, res){
+async function updatePreco(req, res){
     const { id } = req.params;
-    const {preço} = req.body;
+    const {preco} = req.body;
 
-    await carroModels.updatePreço(id, preço);
+    await carroModels.updatePreco(id, preco);
 
     return res.send("Preço atualizado com sucesso");
 }
@@ -46,7 +50,7 @@ async function updatePreço(req, res){
 async function deleteCarro(req, res){
     const { id } = req.params;
 
-    await carroModels.deleteCarroModel(id);
+    await carroModels.deleteCarrosModel(id);
 
     return res.send("Carro retirado com sucesso");
 }
@@ -55,6 +59,6 @@ module.exports ={
     getAllCarros,
     insertCarro,
     getCarroById,
-    updatePreço,
+    updatePreco,
     deleteCarro,
 }

@@ -13,16 +13,10 @@ async function middlewareGetCarroById(req, res, next) {
 }
 
 async function middlewareInsertCarro(req, res, next) {
-    const { marca, modelo, ano, preço, status } = req.body;
+    const { marca, modelo, ano, preco, status } = req.body;
 
-    if (!marca || !modelo || !ano || !preço || !status) {
+    if (!marca || !modelo || !ano || !preco || !status) {
         return res.status(400).send("Dados incompletos");
-    }
-
-    const carro = await carroModels.getCarroByNameModel(id);
-
-    if (carro) {
-        return res.status(400).send("carro já cadastrado");
     }
 
     next();
@@ -30,9 +24,9 @@ async function middlewareInsertCarro(req, res, next) {
 
 async function middlewareUpdateCarro(req, res, next) {
     const { id } = req.params;
-    const { preço } = req.body;
+    const { preco } = req.body;
 
-    if (!id || !preço) {
+    if (!id || !preco) {
         return res.status(400).send("Dados incompletos");
     }
 

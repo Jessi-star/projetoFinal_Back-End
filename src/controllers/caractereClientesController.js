@@ -1,15 +1,15 @@
-const caracteClientes = require("../controllers/carro-controller");
-const clientesModel = require("../models/clientesModel");
+const caracteClientes = require("./carro-controller");
+const clientesModel = require("../models/caracteClienteModel");
 
 async function getAllclientes(req, res) {
-    const clientes = await clientesModel.getAllclientesModel();
+    const clientes = await clientesModel.getAllCaractereClientesModel();
 
     return res.send(clientes);
 }
 
 async function getCaracteristicaClientes(req, res){
     const { id } = req.params;
-    const clintes = await clientesModel.getAllclientesModel(id);
+    const clintes = await clientesModel.getAllCaractereClientesModel(id);
 
     return res.send(clientes);
 }
@@ -23,13 +23,18 @@ async function insertClientes(req,res){
         endereco,
     } = req.body;
 
-    await clientesModel.insertClientes(
-        nome,
-        cpf,
-        telefone,
-        email,
-        endereco,
-    );
+
+    try{ 
+        await clientesModel.insertCaractereClientesModel(
+            nome,
+            cpf,
+            telefone,
+            email,
+            endereco,
+        );
+   } catch(err){
+     return res.status(400).send(err.message)
+   }
 
     return res.status(201).send("Cliente inserido com sucesso");
 }
