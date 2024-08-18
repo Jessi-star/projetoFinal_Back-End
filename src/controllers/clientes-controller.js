@@ -1,4 +1,4 @@
-const clientModel = require("../models/cliente-Model");
+const clientModel = require("../models/clientes-model");
 
 async function getAllClient(req, res) {
     const clientes = await ClientModelModel.getAllClientModel();
