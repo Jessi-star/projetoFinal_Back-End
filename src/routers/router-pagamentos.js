@@ -3,7 +3,7 @@ const router = express.Router();
 const pagamentoController = require("../controllers/pagamento-controller");
 const middlewarePagamentos = require("../middlewares/pagamento-middlewares");
 
-router.get("/pagamentos", pagamentoController.getAllCarros);
+router.get("/pagamentos", pagamentoController.getAllPagamentos);
 router.get(
     "/pagamentos/:id",
     middlewarePagamentos.middlewareGetPagamentoById,
