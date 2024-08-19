@@ -36,14 +36,14 @@ const ClientController = require("../controllers/clientes-controller");
 const middlewareClient = require("../middlewares/clientes-middlewares");
 const validateMiddleware = require("../middlewares/validate-middleware");
 
-router.get("/clientes", animeController.getAllAnimes);
+router.get("/clientes", ClientController.getAllClient);
 router.get(
   "/clientes/:id",
   middlewareClient.middlewareGetClientById,
   ClientController.getClientById
 );
 router.post(
-  "/clientes/:id",
+  "/clientes",
   validateMiddleware.validateTokenMiddleware,
   middlewareClient.middlewareInsertClient,
   ClientController.insertClient
