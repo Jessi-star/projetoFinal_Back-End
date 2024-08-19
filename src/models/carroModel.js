@@ -46,7 +46,7 @@ async function getCarroByNameModel(marca) {
 
 async function updateCarroModel(id, preco) {
     await connection.query(`
-        UPDATE veiculos SET preço = ${preco} WHERE id = ${id}
+        UPDATE veiculos SET preco = ${preco} WHERE id = ${id}
     `)
 
     return;
