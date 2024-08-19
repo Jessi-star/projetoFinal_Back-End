@@ -42,7 +42,7 @@ async function updatePreco(req, res){
     const { id } = req.params;
     const {preco} = req.body;
 
-    await carroModels.updatePreco(id, preco);
+    await carroModels.updateCarroModel(id, preco);
 
     return res.send("Preço atualizado com sucesso");
 }
