@@ -4,6 +4,7 @@ const carroController = require("../controllers/carro-controller");
 const middlewareCarro = require("../middlewares/carro-middlewares");
 
 
+
 router.get("/carros", carroController.getAllCarros);
 router.get(
     "/carros/:id",
