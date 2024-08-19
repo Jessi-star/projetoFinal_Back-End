@@ -13,9 +13,9 @@ async function middlewareGetPagamentoById(res, res, next) {
 
 async function middlewareUpdatePagamento(req, res, next) {
     const {id} = req.params;
-    const {preco} = req.body;
+    const {forma_pagamento} = req.body;
 
-    if(!id|| !preco){
+    if(!id|| !forma_pagamento){
         return res.status(400).send("Dados incompletos")
     }
 
@@ -31,16 +31,16 @@ async function middlewareUpdatePagamento(req, res, next) {
 
 async function middlewareInsertPagamento(req, res, next) {
     const {
-        modelo,
-        preco,
-        status
+        veiculo_id,
+        forma_pagamento,
+        status_pagamento
     } = req.body;
 
-    if ( !modelo ||!preco || !status){
+    if (!veiculo_id ||!forma_pagamento ||!status_pagamento){
     return res.status(400).send("Dados incompletos");
     }
 
-    const pagamento = await pagamentoModel.getPagamentoByMarcaModel(marca);
+    const pagamento = await pagamentoModel.getPagamentoByMarcaModel;
 
     if(pagamento){
         return res.status(400).send("Pagamento já cadastrado");

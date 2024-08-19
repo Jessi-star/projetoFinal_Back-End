@@ -17,18 +17,18 @@ async function getPagamentoByIdModel(id){
 }
 
 async function insertPagamentoModel(
-        modelo,
-        preco,
-        status
+    veiculo_id,
+    forma_pagamento,
+    status_pagamento
 ){
     await connection.query(`
-    INSERT INTO pagamento (modelo,
-        preco,
-        status
+    INSERT INTO pagamento (veiculo_id,
+        forma_pagamento,
+        status_pagamento
     ) VALUES (
-        '${modelo}',
-        '${preco}',
-        '${status}'
+        '${veiculo_id}',
+        '${forma_pagamento}',
+        '${status_pagamento}'
       )
     `)
 
@@ -36,17 +36,17 @@ async function insertPagamentoModel(
 
 }
 
-async function getPagamentoByNameModel(preco){
+async function getPagamentoByNameModel(forma_pagamento){
     const pagamento = await connection.query(
-    `SELECT * FROM pagamento WHERE nome LIKE '${preco}'`
+    `SELECT * FROM pagamento WHERE nome LIKE '${forma_pagamento}'`
     )
 
     return pagamento.rows[0];
 }
 
-async function updatePagamentoModel(id, preco){
+async function updatePagamentoModel(id, forma_pagamento){
     await connection.query(`
-    UPDATE pagamento SET preco = ${preco} WHERE id = ${id}
+    UPDATE pagamento SET preco = ${forma_pagamento} WHERE id = ${id}
     `)
     return;
 }
