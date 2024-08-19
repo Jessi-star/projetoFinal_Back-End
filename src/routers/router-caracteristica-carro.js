@@ -7,12 +7,12 @@ router.get("/caracteristica", caracteristicaCarroMiddleware.middlewareGetAllClie
 caractereClientesController.getAllclientes);
 
 router.post("/caracteristica", caracteristicaCarroMiddleware.middlewareInsertClientes,
-caractereClientesController.insertClientes);
+caractereClientesController.insertCaractereClientes);
 
 router.put("/caracteristica", caracteristicaCarroMiddleware.middlewareUpdateClientes,
-caractereClientesController.updateClientes);
+caractereClientesController.updateCaractereClientes);
 
-router.delete("/caracteristica", caracteristicaCarroMiddleware.middlewareDeleteClientes,
-caractereClientesController.updateClientes);
+router.delete("/caracteristica/:id", caracteristicaCarroMiddleware.middlewareDeleteClientes,
+caractereClientesController.deleteCaractereClientes); 
 
 module.exports = router;

@@ -46,20 +46,21 @@ async function middlewareUpdateClientes(req, res, next) {
 }
 
 async function middlewareDeleteClientes(req, res, next) {
-  const { id } = req.params;
+  const { id } = req.params; 
 
   if (!id) {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await clientesModel.getCaractereClientesByIdModel(id);
+  const cliente = await clientesModel.getCaractereClientesByIdModel(id);
 
-  if (!clientes) {
+  if (!cliente) {
     return res.status(404).send("Cliente não encontrado");
   }
 
   next();
 }
+
 
 module.exports = {
   middlewareGetAllClientes,

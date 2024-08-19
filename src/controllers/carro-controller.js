@@ -1,4 +1,3 @@
-const listaCarro = require("../mocks/listaCarro");
 const carroModels = require("../models/carroModel");
 
 async function getAllCarros(req, res) {

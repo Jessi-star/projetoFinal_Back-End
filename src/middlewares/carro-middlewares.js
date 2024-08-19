@@ -1,4 +1,3 @@
-const listaCarros = require("../mocks/listaCarro");
 const carroModels = require("../models/carroModel");
 
 async function middlewareGetCarroById(req, res, next) {

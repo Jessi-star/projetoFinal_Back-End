@@ -14,33 +14,30 @@ async function getCaracteristicaClientes(req, res){
     return res.send(clientes);
 }
 
-async function insertClientes(req,res){
+async function insertCaractereClientes(req,res){
     const {
-        nome,
-        cpf,
-        telefone,
-        email,
-        endereco,
+        veiculo_ID,
+        cor,
+        combustivel,
+        quilometragem,
     } = req.body;
-
 
     try{ 
         await clientesModel.insertCaractereClientesModel(
-            nome,
-            cpf,
-            telefone,
-            email,
-            endereco,
+            veiculo_ID,
+            cor,
+            combustivel,
+            quilometragem,
         );
    } catch(err){
      return res.status(400).send(err.message)
    }
 
-    return res.status(201).send("Cliente inserido com sucesso");
+    return res.status(201).send("Características do veículo inserido com sucesso");
 }
 
 
-async function updateClientes(req, res){
+async function updateCaractereClientes(req, res){
     const { id } = req.params;
     const {caracteristicas} = req.body;
 
@@ -49,18 +46,20 @@ async function updateClientes(req, res){
     return res.send("Características atualizadas com sucesso");
 }
 
-async function deleteClientes(req, res){
+const deleteCaractereClientes = async (req, res) => {
     const { id } = req.params;
 
-    await clientesModel.deleteClientesModel(id);
-
-    return res.send("Cliente deletado com sucesso");
-}
+    try {
+        await clientesModel.deleteCaractereClientesModel(id);
+        res.status(200).send(`Cliente com id ${id} deletado com sucesso`);
+    } catch (error) {
+        res.status(500).send("Erro ao deletar o cliente");
+    }
+};
 
 module.exports = {
     getAllclientes,
-    getCaracteristicaClientes,
-    insertClientes,
-    deleteClientes,
-    updateClientes,
-}
+    insertCaractereClientes,
+    updateCaractereClientes,
+    deleteCaractereClientes, 
+};
