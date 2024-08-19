@@ -1,4 +1,4 @@
-const ClientModel = require("../models/cliente-Model");
+const ClientModel = require("../models/clientes-model");
 
 async function middlewareGetClientById(req, res, next) {
   const { id } = req.params;
@@ -18,7 +18,7 @@ async function middlewareInsertClient(req, res, next) {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await ClientModelModel.getClientByNameModel(nome);
+  const clientes = await ClientModel.getClientByNameModel(nome);
 
   if (clientes) {
     return res.status(400).send("Cliente já cadastrado");
@@ -51,7 +51,7 @@ async function middlewareDeleteClient(req, res, next) {
     return res.status(400).send("Dados incompletos");
   }
 
-  const clientes = await animesModel.getAnimeByIdModel(id);
+  const clientes = await ClientModel.getClientByIdModel(id);
 
   if (!clientes) {
     return res.status(404).send("Cliente não encontrado");
