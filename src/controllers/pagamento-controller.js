@@ -18,15 +18,15 @@ async function getPagamentosById(req, res){
 
 async function insertPagamento(req, res){
     const{
-        modelo,
-        preco,
-        status
+        veiculo_id,
+        forma_pagamento,
+        status_pagamento
     } = req.body
 
     await pagamentoModel.insertPagamentoModel(
-        modelo,
-        preco,
-        status
+        veiculo_id,
+        forma_pagamento,
+        status_pagamento
     );
 
    return res.status(201).send("Pagamento feito com sucesso")
@@ -35,9 +35,9 @@ async function insertPagamento(req, res){
 
 async function updatePagamento(req, res){
     const {id} = req.params;
-    const {preço} = req.body;
+    const {forma_pagamento} = req.body;
 
-    await pagamentoModel.updatePagamentoModel(id, preço);
+    await pagamentoModel.updatePagamentoModel(id, forma_pagamento);
 
     return res.send("Pagamentos atualizados com sucesso")
 }
